@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: leodanielstuder
@@ -38,7 +39,7 @@ class CatFileCombiner implements FileCombiner
         }
 
         // Run the command
-        (new Process($command))->setTimeout($timeout)->mustRun();
+        (Process::fromShellCommandline($command))->setTimeout($timeout)->mustRun();
 
         return file_exists($absoluteOutputPath);
     }

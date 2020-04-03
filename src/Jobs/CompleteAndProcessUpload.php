@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: leodanielstuder
@@ -116,7 +117,7 @@ class CompleteAndProcessUpload implements ShouldQueue
      */
     protected function validateMimeTypeOrFail(?array $allowedMimeTypes = null)
     {
-        $process = new Process("file -b --mime-type " . escapeshellarg($this->completeFile->getRealPath()));
+        $process = new Process(["file", "-b", "--mime-type", $this->completeFile->getRealPath()]);
         $process->mustRun();
         $mimeType = trim($process->getOutput());
 
